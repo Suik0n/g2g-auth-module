@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-white: #FDFDFD;
+  --color-brand-black: #231F20;
+
+  --color-brand-grey-primary: #919191;
+  --color-brand-grey-secondary: #E9E9E9;
+
+  --color-brand-green-primary: #00E88B;
+  --color-brand-green-light: #A0F6D3;
+
+  --color-brand-red-primary: #FB535E;
+  --color-brand-red-light: #FEC2C6;
+
+  --color-brand-blue-primary: #3194FF;
+  --color-brand-blue-light: #BFDEFF;
+}
+
+@utility wf-* {
+  border-width: 1px;
+  border-style: solid;
+  border-color: --value(--color-*);
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.button {
+  @apply border border-transparent px-5 py-2.5 text-base font-medium bg-brand-black transition-colors;
+}
+
+#app {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
