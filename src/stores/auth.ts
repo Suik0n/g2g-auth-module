@@ -54,6 +54,7 @@ export const useAuthStore = defineStore("auth", () => {
     loading.value = true;
     try {
       user.value = await authService.registerUser(email, password, userData);
+      alert("Account created successfully")
     } catch (err) {
       alert(err instanceof Error ? err.message : "Account creation failed");
     } finally {
