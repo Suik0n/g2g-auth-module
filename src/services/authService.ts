@@ -39,7 +39,7 @@ export async function login(email: string, password: string) {
   const hash = await secureHash(password);
   const users = readUsers();
   const user = users.find((u) => u.email === email && u.passwordHash === hash);
-  await emulateApiDelay(700);
+  await emulateApiDelay(1700);
   if (!user) throw new Error("Invalid credentials");
   setSession(user.id);
   return user;
@@ -53,7 +53,7 @@ export function logout() {
 export async function requestPasswordReset(email: string) {
   const users = readUsers();
   const idx = users.findIndex((u) => u.email === email);
-  await emulateApiDelay(500);
+  await emulateApiDelay(1000);
   if (idx === -1) throw new Error("Email not found");
   const token = uuidv4();
   users[idx]!.resetToken = token;
@@ -95,7 +95,7 @@ export async function registerUser(
   const passwordHash = await secureHash(password);
   const users = readUsers();
   if (users.some((u) => u.email === email)) {
-    emulateApiDelay(600);
+    emulateApiDelay(1000);
     throw new Error("Email already exists");
   }
   const user: User = {
@@ -107,7 +107,7 @@ export async function registerUser(
   };
   users.push(user);
   writeUsers(users);
-  await emulateApiDelay(700);
+  await emulateApiDelay(2000);
   setSession(user.id);
   return user;
 }
@@ -127,6 +127,6 @@ export async function updateProfile(updates: Partial<User>): Promise<User> {
     updatedAt: new Date().toISOString(),
   } as User;
   writeUsers(users);
-  await emulateApiDelay(700);
+  await emulateApiDelay(200);
   return users[idx]!;
 }
